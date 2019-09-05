@@ -1,0 +1,244 @@
+body {
+  overflow: auto;
+  min-width: 300px;
+  margin: 0;
+  background-color: rgb(20, 31, 31);
+}
+
+.container{
+  width: 100%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+.search-container{
+  margin: 20px auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 75%;
+}
+
+.search-input {
+  width: 55%;
+  height: 48px;
+  font-size: 1.5em;
+  line-height: 1.5em;
+  box-sizing: border-box;
+  border: 4px solid rgb(204, 0, 102);
+  border-right: none;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+.btn-search{
+  height: 48px;
+  margin: 0;
+  font-size: 1.5em;
+  box-sizing: border-box;
+  color: white;
+  background-color:rgb(153, 0, 51);
+  border: 4px solid rgb(204, 0, 102);
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+/*-----------------------------CONTAINER-SNIPPETS---------------------------------------*/
+.snippets {
+  --n: 1;
+  display: flex;
+  align-items: flex-start;
+  width: calc( var(--n) * 100%);
+  padding: 0;
+  margin-top: 20px;
+  /* transform: translateX(calc(var(--i, 0)/var(--n)*-100% + var(--tx, 0px))); */
+  transform: translateX(calc(var(--tx, 0px)));
+}
+
+.card {
+  font-family: Arial, Helvetica, sans-serif;
+  user-select: none;
+  height: 440px;
+  background-color:rgb(255, 204, 230);
+  color: rgb(26, 0, 13);
+  border-radius: 10px;
+  overflow: hidden;
+  padding: 5px 0;
+  box-sizing: content-box;
+  z-index: 10;
+  border: 2px solid rgb(204, 0, 102);
+  min-width: 225px;
+}
+
+@media screen and (max-height: 600px) {
+  .card {
+    height: 340px;
+  }
+  .search-container{
+    margin: 4px auto;
+  }
+  .slider{
+    margin: 5px auto;
+  }
+  .snippets {
+    margin-top: 4px;
+  }
+  .card .thumbnail, .card h3{
+    margin: 5px auto;
+  }
+}
+
+@media screen and (max-height: 500px) {
+  .card {
+    height: 280px;
+  }
+  .search-container{
+    margin: 2px auto;
+  }
+  .slider{
+    margin: 2px auto;
+  }
+  .snippets {
+    margin-top: 2px;
+  }
+  .card .thumbnail, .card h3{
+    margin-top: 3px;
+    margin-bottom: 2px;
+  }
+  .description{
+    display: none;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .card {
+    width: 23vw;
+    margin: 10px calc(1vw - 2px);
+  }
+}
+
+@media screen and (max-width: 1200px) and (min-width: 900px) {
+  .card {
+    width: 31vw;
+    margin: 10px calc(1.16666vw - 2px);
+  }
+}
+
+@media screen and (max-width: 899px) and (min-width: 541px) {
+  .card {
+    width: 46vw;
+    margin: 10px calc(2vw - 2px);
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .card {
+    width: 80vw;
+    margin: 5px calc(10vw - 2px);
+  }
+}
+
+.smooth { transition: transform .3s ease-out; }
+
+.card:hover {
+  background-color: rgb(128, 0, 40);
+  box-shadow: 0 0 10px 2px rgb(255, 51, 116);
+  color: white;
+}
+
+.card:hover .thumbnail{
+  box-shadow: 0 0 5px 4px pink;
+}
+
+.card:hover h3{
+  box-shadow: 0 0 4px 3px pink;
+}
+
+.card h3{
+  height: 2.5em;
+  font-size: 1.25em;
+  margin: 10px auto;
+  width: 80%;
+  overflow: hidden;
+  background-color: rgb(51, 0, 15);
+  box-shadow: 0 0 4px 2px rgb(51, 0, 15);
+  text-align: center;
+  border-radius: 5px;
+}
+
+.card h3:hover{
+  background-color: rgb(255, 51, 116);
+}
+
+.card a{
+  color: rgb(204, 255, 204);
+  text-decoration: none;
+}
+
+.card a:hover{
+  color:white;
+}
+
+.card img{
+  width: 24px;
+  margin-right: 8px;
+}
+
+.card .thumbnail{
+  width: 80%;
+  margin: 10px 10%;
+  border-radius: 5px;
+  box-shadow: 0 0 4px 3px rgb(51, 0, 15);
+}
+
+.card p{
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: center;
+  margin: 4px;
+  text-align: center;
+}
+.card .description{
+  display: block;
+  height: 45pt;
+  font-size: 11pt;
+  font-weight: normal;
+  text-align: justify;
+  padding: 8px 4px;
+  overflow: hidden;
+}
+
+.slider{
+  text-align: center;
+  width: 240px;
+  margin: 10px auto;
+}
+
+.navBtn{
+  border-radius: 5px;
+  width: 36px;
+  height: 36px;
+  background-color:rgb(153, 0, 51);
+  border: 1px solid white;
+  color: white;
+  font-weight: bold;
+  margin: 5px;
+}
+.navBtn:hover{
+  border: 1px solid rgb(153, 0, 51);
+  background-color: white;
+  color: rgb(153, 0, 51);
+}
+
+.tooltip {
+  border-radius: 25%;
+  padding: 4px;
+  background-color:rgb(255, 51, 116);
+  border: 1px solid rgb(51, 0, 15);
+  color: white;
+  margin: 5px;
+  display: inline-block;
+}
+
+.off{
+  visibility: hidden;
+}
