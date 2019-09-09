@@ -47,6 +47,14 @@ export default class AppView extends EventEmitter {
     content.className = 'snippets';
     const btnSearch = document.createElement('button');
     const hidden = document.createElement('span');
+    const author = document.createElement('p');
+    author.className = 'author off';
+    const authorLink = document.createElement('a');
+    authorLink.setAttribute('href', 'https://github.com/Slider7');
+    authorLink.setAttribute('target', '_blank');
+    authorLink.innerHTML = 'by K. Shlembayev';
+    author.appendChild(authorLink);
+
     const slider = SliderView();
 
     searchInput.setAttribute('type', 'text');
@@ -64,6 +72,7 @@ export default class AppView extends EventEmitter {
     container.appendChild(content);
     document.body.appendChild(container);
     document.body.appendChild(slider);
+    document.body.appendChild(author);
 
     btnSearch.addEventListener('click', this.startSearch.bind(this));
     searchInput.addEventListener('keypress', (e) => {
@@ -79,8 +88,9 @@ export default class AppView extends EventEmitter {
       clipView.render().forEach((item) => {
         document.querySelector('.snippets').appendChild(item);
       });
-      content.style.setProperty('--n', (currScreen + 1) * 15); // ширина контант-дива в карточках
+      content.style.setProperty('--n', (currScreen + 1) * 15); // ширина контент-дива в карточках
       slider.classList.remove('off');
+      author.classList.remove('off');
     }
     /*  --------------------------------------------------------------------------------------  */
     function checkButton(i) {
@@ -129,8 +139,12 @@ export default class AppView extends EventEmitter {
       this.w = window.innerWidth;
       const oldNCard = nCard;
       nCard = Math.trunc(this.w / 300);
+      const { i } = this;
       this.i = Math.round(this.i * (oldNCard / nCard));
-      if (oldNCard > nCard) this.i -= 1;
+      if (i !== this.i) {
+        if (oldNCard > nCard) this.i -= oldNCard - nCard;
+        else this.i += oldNCard - 1;
+      }
       document.querySelector('.container').scrollLeft = this.i * this.w;
       checkButton(this.i);
     };
