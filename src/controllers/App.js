@@ -1,7 +1,7 @@
 import AppModel from '../models/AppModel';
 import AppView from '../views/AppView';
 
-const APIKEY = process.env.API_KEY;
+const APIKEY = process.env.youtube_client_API_KEY;
 
 export default class App {
   constructor(model, view) {
