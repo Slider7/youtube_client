@@ -5,13 +5,13 @@ body {
   background-color: rgb(20, 31, 31);
 }
 
-.container{
+.container {
   width: 100%;
   overflow-x: hidden;
   scroll-behavior: smooth;
 }
 
-.search-container{
+.search-container {
   margin: 20px auto;
   display: flex;
   flex-direction: row;
@@ -30,13 +30,13 @@ body {
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
 }
-.btn-search{
+.btn-search {
   height: 48px;
   margin: 0;
   font-size: 1.5em;
   box-sizing: border-box;
   color: white;
-  background-color:rgb(153, 0, 51);
+  background-color: rgb(153, 0, 51);
   border: 4px solid rgb(204, 0, 102);
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
@@ -47,7 +47,7 @@ body {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  width: calc( var(--n) * 100%);
+  width: calc(var(--n) * 100%);
   padding: 0;
   margin-top: 20px;
   /* transform: translateX(calc(var(--i, 0)/var(--n)*-100% + var(--tx, 0px))); */
@@ -58,7 +58,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   user-select: none;
   height: 440px;
-  background-color:rgb(255, 204, 230);
+  background-color: rgb(255, 204, 230);
   color: rgb(26, 0, 13);
   border-radius: 10px;
   overflow: hidden;
@@ -73,16 +73,17 @@ body {
   .card {
     height: 340px;
   }
-  .search-container{
+  .search-container {
     margin: 4px auto;
   }
-  .slider{
+  .slider {
     margin: 5px auto !important;
   }
   .snippets {
     margin-top: 4px;
   }
-  .card .thumbnail, .card h3{
+  .card .thumbnail,
+  .card h3 {
     margin: 5px auto;
   }
 }
@@ -91,20 +92,21 @@ body {
   .card {
     height: 280px;
   }
-  .search-container{
+  .search-container {
     margin: 2px auto;
   }
-  .slider{
+  .slider {
     margin: 2px auto !important;
   }
   .snippets {
     margin-top: 2px;
   }
-  .card .thumbnail, .card h3{
+  .card .thumbnail,
+  .card h3 {
     margin-top: 3px;
     margin-bottom: 2px;
   }
-  .description{
+  .description {
     display: none;
   }
 }
@@ -113,20 +115,22 @@ body {
   .card {
     height: 250px;
   }
-  .search-container{
+  .search-container {
     margin: 2px auto;
   }
-  .slider{
+  .slider {
     margin: 2px auto !important;
   }
   .snippets {
     margin-top: 1px;
   }
-  .card .thumbnail, .card h3{
+  .card .thumbnail,
+  .card h3 {
     margin-top: 2px !important;
     margin-bottom: 1px !important;
   }
-  .card .author, .card .description{
+  .card .author,
+  .card .description {
     display: none !important;
   }
 }
@@ -135,24 +139,25 @@ body {
   .card {
     height: 210px;
   }
-  .search-container{
+  .search-container {
     margin: 2px auto;
   }
-  .slider{
+  .slider {
     margin: 2px auto !important;
   }
   .snippets {
     margin-top: 1px;
   }
-  .card .thumbnail, .card h3{
+  .card .thumbnail,
+  .card h3 {
     margin-top: 2px !important;
     margin-bottom: 1px !important;
   }
-  .card .author, .card .description{
+  .card .author,
+  .card .description {
     display: none !important;
   }
 }
-
 
 @media screen and (min-width: 1200px) {
   .card {
@@ -182,7 +187,9 @@ body {
   }
 }
 
-.smooth { transition: transform .3s ease-out; }
+.smooth {
+  transition: transform 0.3s ease-out;
+}
 
 .card:hover {
   background-color: rgb(128, 0, 40);
@@ -190,15 +197,15 @@ body {
   color: white;
 }
 
-.card:hover .thumbnail{
+.card:hover .thumbnail {
   box-shadow: 0 0 5px 4px pink;
 }
 
-.card:hover h3{
+.card:hover h3 {
   box-shadow: 0 0 4px 3px pink;
 }
 
-.card h3{
+.card h3 {
   height: 2.5em;
   font-size: 1.25em;
   margin: 10px auto;
@@ -210,32 +217,32 @@ body {
   border-radius: 5px;
 }
 
-.card h3:hover{
+.card h3:hover {
   background-color: rgb(255, 51, 116);
 }
 
-.card a{
+.card a {
   color: rgb(204, 255, 204);
   text-decoration: none;
 }
 
-.card a:hover{
-  color:white;
+.card a:hover {
+  color: white;
 }
 
-.card img{
+.card img {
   width: 24px;
   margin-right: 8px;
 }
 
-.card .thumbnail{
+.card .thumbnail {
   width: 80%;
   margin: 10px 10%;
   border-radius: 5px;
   box-shadow: 0 0 4px 3px rgb(51, 0, 15);
 }
 
-.card p{
+.card p {
   display: flex;
   flex-direction: row-reverse;
   align-items: center;
@@ -243,33 +250,33 @@ body {
   margin: 4px;
   text-align: center;
 }
-.card .description{
+.card .description {
   display: block;
   height: 45pt;
   font-size: 11pt;
   font-weight: normal;
   text-align: justify;
-  padding: 8px 4px;
+  padding: 8px;
   overflow: hidden;
 }
 
-.slider{
+.slider {
   text-align: center;
   width: 240px;
   margin: 10px auto;
 }
 
-.navBtn{
+.navBtn {
   border-radius: 5px;
   width: 36px;
   height: 36px;
-  background-color:rgb(153, 0, 51);
+  background-color: rgb(153, 0, 51);
   border: 1px solid white;
   color: white;
   font-weight: bold;
   margin: 5px;
 }
-.navBtn:hover{
+.navBtn:hover {
   border: 1px solid rgb(153, 0, 51);
   background-color: white;
   color: rgb(153, 0, 51);
@@ -278,18 +285,18 @@ body {
 .tooltip {
   border-radius: 25%;
   padding: 4px;
-  background-color:rgb(255, 51, 116);
+  background-color: rgb(255, 51, 116);
   border: 1px solid rgb(51, 0, 15);
   color: white;
   margin: 5px;
   display: inline-block;
 }
 
-.off{
+.off {
   visibility: hidden;
 }
 
-.author{
-  color:rgb(153, 0, 51);
+.author {
+  color: rgb(153, 0, 51);
   text-align: center;
 }
