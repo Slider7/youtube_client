@@ -28,13 +28,17 @@ export default class AppView extends EventEmitter {
 
   render(currScreen) {
     if (currScreen > 0) {
-      const clipView = new ClipsView(this.data, currScreen * 15, currScreen * 15 + 15);
-      //  const newDiv = document.createElement('div');
+      const clipView = new ClipsView(
+        this.data,
+        currScreen * 15,
+        currScreen * 15 + 15
+      );
       clipView.render().forEach((item) => {
-        //  newDiv.innerHTML = item;
-        document.querySelector('.snippets').appendChild(item); // newDiv.children[0]
+        document.querySelector('.snippets').appendChild(item);
       });
-      document.querySelector('.snippets').style.setProperty('--n', currScreen * 15 + 15); // ширина контант-дива в экранах
+      document
+        .querySelector('.snippets')
+        .style.setProperty('--n', currScreen * 15 + 15); // ширина контант-дива в экранах
       this.N = Math.trunc(((currScreen + 1) * 15) / 4) + 1;
       return;
     }
@@ -76,7 +80,7 @@ export default class AppView extends EventEmitter {
 
     btnSearch.addEventListener('click', this.startSearch.bind(this));
     searchInput.addEventListener('keypress', (e) => {
-      if (e.keyCode === 13) {
+      if (e.key === 'Enter') {
         btnSearch.click();
       }
     });
@@ -84,8 +88,12 @@ export default class AppView extends EventEmitter {
     hidden.addEventListener('click', this.nextSearch.bind(this));
 
     if (this.data) {
-      const clipView = new ClipsView(this.data, currScreen * 15, currScreen * 15 + 15);
-      clipView.render().forEach((item) => {
+      const clipView = new ClipsView(
+        this.data,
+        currScreen * 15,
+        currScreen * 15 + 15
+      );
+      clipView.render().forEach(item => {
         document.querySelector('.snippets').appendChild(item);
       });
       content.style.setProperty('--n', (currScreen + 1) * 15); // ширина контент-дива в карточках
@@ -101,7 +109,7 @@ export default class AppView extends EventEmitter {
       document.querySelectorAll('.tooltip')[0].innerHTML = i;
     }
 
-    const slideLeft = (e) => {
+    const slideLeft = e => {
       e.preventDefault();
       if (this.i < this.N) {
         this.i += 1;
@@ -113,7 +121,7 @@ export default class AppView extends EventEmitter {
       }
     };
 
-    const slideRight = (e) => {
+    const slideRight = e => {
       e.preventDefault();
       if (this.i > 0) {
         this.i -= 1;
@@ -126,7 +134,9 @@ export default class AppView extends EventEmitter {
     let x0 = null;
     let locked = false;
 
-    function unify(e) { return e.changedTouches ? e.changedTouches[0] : e; }
+    function unify(e) {
+      return e.changedTouches ? e.changedTouches[0] : e;
+    }
     function lock(e) {
       x0 = unify(e).clientX;
       content.classList.toggle('smooth', !(locked = true));
@@ -151,13 +161,13 @@ export default class AppView extends EventEmitter {
 
     size();
 
-    const move = (e) => {
+    const move = e => {
       this.N = Math.trunc(content.children.length / nCard) + 1; // ширина контант-дива в экранах
       if (locked) {
         const dx = unify(e).clientX - x0;
         const s = Math.sign(dx);
-        let f = +(s * dx / this.w).toFixed(2); // порог для сдвига (0,1 экрана)
-        if ((this.i > 0 || s < 0) && (this.i < this.N || s > 0) && (f > 0.1)) {
+        let f = +((s * dx) / this.w).toFixed(2); // порог для сдвига (0,1 экрана)
+        if ((this.i > 0 || s < 0) && (this.i < this.N || s > 0) && f > 0.1) {
           this.i -= s;
           container.scrollLeft = this.i * this.w;
         }
@@ -177,7 +187,12 @@ export default class AppView extends EventEmitter {
       e.preventDefault();
       if (locked) {
         //  визуализация сдвига при драге перед сдвигом
-        if (x0 || x0 === 0) content.style.setProperty('--tx', `${Math.round((unify(e).clientX - x0) / 2)}px`);
+        if (x0 || x0 === 0) {
+          content.style.setProperty(
+            '--tx',
+            `${Math.round((unify(e).clientX - x0) / 2)}px`
+          );
+        }
       }
     }
 
@@ -185,13 +200,23 @@ export default class AppView extends EventEmitter {
     content.addEventListener('touchstart', lock, false);
     content.addEventListener('mouseup', move, false);
     content.addEventListener('touchend', move, false);
-    content.addEventListener('touchmove', (e) => { e.preventDefault(); }, false);
+    content.addEventListener(
+      'touchmove',
+      e => {
+        e.preventDefault();
+      },
+      false
+    );
 
     content.addEventListener('mousemove', drag, false);
     content.addEventListener('touchmove', drag, false);
 
-    document.getElementById('next').addEventListener('click', slideLeft.bind(this));
-    document.getElementById('prev').addEventListener('click', slideRight.bind(this));
+    document
+      .getElementById('next')
+      .addEventListener('click', slideLeft.bind(this));
+    document
+      .getElementById('prev')
+      .addEventListener('click', slideRight.bind(this));
 
     document.getElementById('prev').addEventListener('mouseover', () => {
       document.querySelectorAll('.tooltip')[0].classList.remove('off');

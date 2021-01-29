@@ -1,7 +1,7 @@
 import AppModel from '../models/AppModel';
 import AppView from '../views/AppView';
 
-const APIKEY = '###';
+const APIKEY = 'AIzaSyB4Bc2oexDsYLDiiRV5dGKr22ZdDrn_L-E';
 
 export default class App {
   constructor(model, view) {
