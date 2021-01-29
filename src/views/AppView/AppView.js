@@ -31,7 +31,7 @@ export default class AppView extends EventEmitter {
       const clipView = new ClipsView(
         this.data,
         currScreen * 15,
-        currScreen * 15 + 15
+        currScreen * 15 + 15,
       );
       clipView.render().forEach((item) => {
         document.querySelector('.snippets').appendChild(item);
@@ -91,9 +91,9 @@ export default class AppView extends EventEmitter {
       const clipView = new ClipsView(
         this.data,
         currScreen * 15,
-        currScreen * 15 + 15
+        currScreen * 15 + 15,
       );
-      clipView.render().forEach(item => {
+      clipView.render().forEach((item) => {
         document.querySelector('.snippets').appendChild(item);
       });
       content.style.setProperty('--n', (currScreen + 1) * 15); // ширина контент-дива в карточках
@@ -109,7 +109,7 @@ export default class AppView extends EventEmitter {
       document.querySelectorAll('.tooltip')[0].innerHTML = i;
     }
 
-    const slideLeft = e => {
+    const slideLeft = (e) => {
       e.preventDefault();
       if (this.i < this.N) {
         this.i += 1;
@@ -121,7 +121,7 @@ export default class AppView extends EventEmitter {
       }
     };
 
-    const slideRight = e => {
+    const slideRight = (e) => {
       e.preventDefault();
       if (this.i > 0) {
         this.i -= 1;
@@ -161,7 +161,7 @@ export default class AppView extends EventEmitter {
 
     size();
 
-    const move = e => {
+    const move = (e) => {
       this.N = Math.trunc(content.children.length / nCard) + 1; // ширина контант-дива в экранах
       if (locked) {
         const dx = unify(e).clientX - x0;
@@ -190,7 +190,7 @@ export default class AppView extends EventEmitter {
         if (x0 || x0 === 0) {
           content.style.setProperty(
             '--tx',
-            `${Math.round((unify(e).clientX - x0) / 2)}px`
+            `${Math.round((unify(e).clientX - x0) / 2)}px`,
           );
         }
       }
@@ -202,10 +202,10 @@ export default class AppView extends EventEmitter {
     content.addEventListener('touchend', move, false);
     content.addEventListener(
       'touchmove',
-      e => {
+      (e) => {
         e.preventDefault();
       },
-      false
+      false,
     );
 
     content.addEventListener('mousemove', drag, false);
