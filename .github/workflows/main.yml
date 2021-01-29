@@ -31,4 +31,4 @@ jobs:
           npm install
           npm run build
         env: 
-          secrets.youtube_client_API_KEY: ${{ secrets.youtube_client_API_KEY }}
+          YOUTUBE_CLIENT_API_KEY: ${{ secrets.YOUTUBE_CLIENT_API_KEY }}
